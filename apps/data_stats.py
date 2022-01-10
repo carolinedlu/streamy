@@ -10,6 +10,14 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
+# st.set_page_config(
+#         page_title="Covid19 CT Scan Images Detector",
+#         page_icon="clean_hands_open_hearts_covid19footerimage2-removebg-preview.png",
+#         layout="centered",
+#         initial_sidebar_state="auto",
+#
+#     )
+
 st.set_option('deprecation.showfileUploaderEncoding', False)
 # Title of the main page
 # display = Image.open('Logo.png')
@@ -22,6 +30,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 
 def app():
+
     display = Image.open('clean_hands_open_hearts_covid19footerimage2.jpg')
     display = np.array(display)
     st.image(display, width = 400)
@@ -31,6 +40,18 @@ def app():
     st.markdown(new_title, unsafe_allow_html=True)
 
     st.title('CT')
+
+    adjust_footer = """
+    <style>
+    footer:after {
+    content: 'Copyright @ 2022 By Ramy Elsaraf';
+    display: block;
+    position: relative;
+    }
+    </style>
+    """
+
+    st.markdown(adjust_footer, unsafe_allow_html=True)
 
     # st.write("This is a sample data stats in the mutliapp.")
     # st.write("See `apps/data_stats.py` to know how to use it.")
@@ -68,7 +89,7 @@ def app():
         # TO See details
         for image_file in uploaded_files:
             file_details = {"filename": image_file.name, "filetype": image_file.type,
-                            "filesize": image_file.size}
+                            "filesize": str(image_file.size/1024) + " KB"}
             imageIM = Image.open(image_file)
             st.image(imageIM, use_column_width=True)
             st.write(file_details)
@@ -116,6 +137,8 @@ def app():
     #                  ## **Prediction:** You are affected by Glaucoma. Please consult an ophthalmologist as soon as possible.
     #                  """
     #                  )
+
+
 
 
 

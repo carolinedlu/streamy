@@ -9,6 +9,14 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
+# st.set_page_config(
+#         page_title="Covid19 CT Scan Images Detector",
+#         page_icon="clean_hands_open_hearts_covid19footerimage2-removebg-preview.png",
+#         layout="centered",
+#         initial_sidebar_state="auto",
+#
+#     )
+
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 def app():
@@ -20,6 +28,18 @@ def app():
     new_title = '<p style="text-align: center; font-weight: bold; font-family:sans-serif; color:Black; font-size: 62px;">Covid19 Chest Images Scans Detector</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     st.title('Xray')
+
+    adjust_footer = """
+        <style>
+        footer:after {
+        content: 'Copyright @ 2022 By Ramy Elsaraf';
+        display: block;
+        position: relative;
+        }
+        </style>
+        """
+
+    st.markdown(adjust_footer, unsafe_allow_html=True)
 
     # @st.cache(suppress_st_warning=True,allow_output_mutation=True)
     def import_and_predict(image_data, model):
@@ -81,7 +101,7 @@ def app():
         # TO See details
         for image_file in uploaded_files:
             file_details = {"filename": image_file.name, "filetype": image_file.type,
-                            "filesize": image_file.size}
+                            "filesize": str(image_file.size/1024) + " KB"}
             imageIM = Image.open(image_file)
             st.image(imageIM, use_column_width=True)
             st.write(file_details)
