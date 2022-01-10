@@ -1,4 +1,4 @@
-# Covid19 Chest Scan Images Detector [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/golden-panther/glaucoma-detector/glaucoma_app.py)
+# Covid19 Chest Scan Images Detector [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/ramy9999/streamy/main/app.py)
 
 Link: https://share.streamlit.io/ramy9999/streamy/main/app.py
 
