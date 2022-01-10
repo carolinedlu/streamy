@@ -1,6 +1,17 @@
 import streamlit as st
+
+st.set_page_config(
+        page_title="Covid19 Chest Scan Images Detector",
+        page_icon="clean_hands_open_hearts_covid19footerimage2-removebg-preview.png",
+        layout="centered",
+        initial_sidebar_state="auto",
+
+    )
+
 from multiapp import MultiApp
 from apps import home, data_stats, xrayandct # import your app modules here
+
+
 
 app = MultiApp()
 
