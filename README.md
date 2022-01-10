@@ -1,63 +1,66 @@
-# Glaucoma detector [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/golden-panther/glaucoma-detector/glaucoma_app.py)
+# Covid19 Chest Scan Images Detector [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/golden-panther/glaucoma-detector/glaucoma_app.py)
 
-Link: https://share.streamlit.io/golden-panther/glaucoma-detector/glaucoma_app.py
+Link: https://share.streamlit.io/ramy9999/streamy/main/app.py
 
-(If app at above link doesn't work then use this project by downloading and running it on your local PC)
+clone or download zip to run on your local machine if you want.
 
-## Web Page
-![alt text](https://github.com/golden-panther/glaucoma-detector/blob/master/lit.jpg)
+## Overview of All types of Images
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/CT%20and%20Xray%20snip.PNG)
 
-## Healthy Eye
-![alt text](https://github.com/golden-panther/glaucoma-detector/blob/master/healthy%20lit.jpg)
 
-## Glaucomatous Eye
-![alt text](https://github.com/golden-panther/glaucoma-detector/blob/master/glaucoma%20lit.jpg)
+## Running Web Page of the Web APP
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20streamy%201%20right.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20streamy%202.PNG)
+
+
+## Healthy CT Chest Scan 
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/ct%20streamy%201.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/ct%20streamy%20Normal%201.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/ct%20streamy%20Normal%202.PNG)
+
+## COVID19 CT Chest Scan
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/ct%20streamy%20Covid19%202.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/ct%20streamy%20Covid19%203.PNG)
+
+## Healthy Xray Chest Scan
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20test%20streamy%201.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20test%20streamy%202%20normal.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20test%20streamy%203%20normal.PNG)
+
+## COVID19 Xray Chest Scan
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20test%20streamy%201%20Covid19.PNG)
+![alt text](https://github.com/Ramy9999/streamy/blob/main/testy/xray%20test%20streamy%202%20Covid19.PNG)
+
 
 # >> Details
-## Part 1
-* We have collected all the publicly available labelled(glaucoma or normal) fundus images of eye from web.
-* Some are already cropped and some are full. So, we cropped the full fundus images too. 
-* We bulk renamed all the images in the two classes using https://www.bulkrenameutility.co.uk/
-* Then we bulk converted all the images to jpg using https://www.xnview.com/en/xnconvert/
-* Number of images in both classes are not equal. They are highly imbalanced. Then we balanced by removing extra images.
-* Finally, we sticked with 1,115 images of each class totalling 2,230 (Contact me if you want this data). And we divided them randomly into train, val and test sets in the ratio 8:1:1 using https://pypi.org/project/split-folders/
-## Part 2
-* We uploaded all these images to my google drive and trained on various CNN architectures from simple to advanced.
-* We did augmentation of data using keras ImageGenerator to cut down high variance. But there is some bias due to low and bad data.
-* We used keras (2.4.3) and tesorflow (2.3.0) on top of python (3.6.9). (You can see the code in train.py)
-* We trained on train set and validated on validation set after each epoch. Finally tested the test set.
-* It gave 93 percent AUC score, some good accuracy, precision and recall values. We saved the model file(h5) for further usage.
-* Then we built a simple streamlit app for hosting on web.
+## Step 1
+* I have collected most of the publicly available and most common datasets of CT and Xray COVID19 and Normal Chest Scan Images.
+* Did the google colab of the three models one for Xrays, another for CT and a third Multi Class one for Both.
+* Preprocessed the data and used several libraries for data transformation like image augmentation and converting to numbers with numpy among others.
+* Used both my own custom CNN for the first model built entirely, and also transfer learning with its own custom CNN as well.
+* Trained and saved the very good 3 models of the previous.
+
+## Step 2
+* Tested the models customly on never seen chest scan images before.
+* Got 96% Accuracy and slightly similar Validation and Test Accuracy, and other metrics were good as well.
+* Then I built and deployed the streamlit app after uploading the project to GitHub via Git LFS and linked them for hosting the models on the web and for their efficient utilzation by anyone.
 
 
 # >> Usage: 
 
-Always remember that tensorflow does not support python 3.8. It supports upto version 3.7 only.
+Clone or download the zip of the project, and the requirements text file contains all the latest dependancies required to install, install that first then run like below:
 
-To use our project - go to this link https://share.streamlit.io/golden-panther/glaucoma-detector/glaucoma_app.py
-
-(or)
-
-To run this app
-
+To run this COVID19 Image Detection app =>
 ```
 pip install -r requirements.txt
-streamlit run https://raw.githubusercontent.com/golden-panther/glaucoma-detector/master/glaucoma_app.py
+streamlit run app.py
 ```
 
 (or)
 
-To run our glaucoma detector on your machine by cloning this repository,
-* Type the following in your terminal or cmd:
-```
-pip install -r requirements.txt
-streamlit run glaucoma_app.py
-```
-* The web app opens up in a local host. Then you can use it for classifying. That's it!
+use and go to my working project online - go to this link https://share.streamlit.io/ramy9999/streamy/main/app.py
 
-* Upload a (jpg) cropped fundus image of eye(if not cropped, see note). Our model predicts whether affected by glaucoma or not.
-* I provided two folders Glaucomatous and Healthy. These contain images from my test set. Use these if you don't have any fundus images with you.
+* The web app opens up in a local host if executed localy offline. Then you can use it for COVID19 Chest Scan Image classification. That's it!
 
-Note: The image should be cropped around the optic nerve part.(see the below **full to cropped** image for reference)
+* Upload any type of image you want or even multiple images, provided that each image does not exceed 200 MB.
 
-![alt text](https://github.com/golden-panther/glaucoma-detector/blob/master/full%20to%20cropped.jpg)
