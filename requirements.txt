@@ -3,4 +3,3 @@ pillow
 numpy
 streamlit
 pandas
-click==8
